@@ -1,0 +1,36 @@
+<!-- templates/my_template.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dropdown Example</title>
+</head>
+<body>
+
+    <h1>Select a Number:</h1>
+
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+
+        <label for="user-dropdown">Select a Number:</label>
+        <select id="user-dropdown" name="selected_number">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        <button type="submit">Get User</button>
+    </form>
+
+    {% if selected_user %}
+        <h2>User Information:</h2>
+        <p>User Name: {{ selected_user.name }}</p>
+        <p>User Description: {{ selected_user.description }}</p>
+    {% endif %}
+
+</body>
+</html>
